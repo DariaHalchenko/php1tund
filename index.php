@@ -17,6 +17,7 @@
     <?php
     if(isset($_GET['leht'])){
         include('content/'.$_GET['leht']);
+
     } else {
         echo "Tere tulemast!";
     }

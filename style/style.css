@@ -1,22 +1,29 @@
+header, footer {
+    color: Blue;
+    background-color: PaleTurquoise;
+    width: 40%;
+    text-align: center;
+    border: solid 5pt DodgerBlue;
+    border-radius: 80px;
+    padding: 1%;
+}
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: plum;
+    background-color: SkyBlue;
 }
-
 li {
     float: left;
 }
-
 li a {
     display: block;
-    color: deeppink;
+    color: MediumBlue;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 li a:hover {
-    background-color: pink;
+    background-color: LightCyan;
 }
