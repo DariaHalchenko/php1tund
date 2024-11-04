@@ -52,6 +52,7 @@ echo "<pre>".ltrim($tekst3)."</pre>";
 echo "<br>";
 echo trim($tekst3, "A, a, k..n, w");
 // Iseseisvalt - Tekst kui massiiv
+echo "<br>";
 $massivitekst='Taiendav info opilase kohta';
 echo "<br>";
 // Massiiv algab nullist
