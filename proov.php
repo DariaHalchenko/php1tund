@@ -43,10 +43,24 @@ echo "<br>";
 echo "Sõnade arv lauses - ".str_word_count($tekst);
 //Iseseisvalt - teksti kärpimine
 $tekst2='Põhitoetus võitakse ära 11.11 kui võlgnevused ei ole parandatud';
+echo "<pre>".ltrim($tekst2)."</pre>";
 echo "<br>";
-echo "<pre>$tekst2</pre>";
+echo trim($tekst2, "P, p, a..d, o");
 echo "<br>";
-echo ltrim($tekst2);
+$tekst3 = 'A woman should soften but not weaken a man';
+echo "<pre>".ltrim($tekst3)."</pre>";
 echo "<br>";
-echo trim($tekst2, "P, a.. k..n, w");
-//Iseseisvalt - tekst kui massiiv
+echo trim($tekst3, "A, a, k..n, w");
+// Iseseisvalt - Tekst kui massiiv
+$massivitekst='Taiendav info opilase kohta';
+echo "<br>";
+// Massiiv algab nullist
+echo $massivitekst;
+echo "<br>";
+echo "1.täht - ".$massivitekst[0]; // T
+// massiv algab nullistecho "1.täht - ".$massivitekst[0];
+echo '<br>';
+echo "4.täht - ".$massivitekst[4]; //n
+$sona=str_word_count($massivitekst,1);
+print_r($sona);
+echo $sona [2];
