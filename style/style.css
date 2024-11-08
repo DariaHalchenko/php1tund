@@ -3,9 +3,10 @@ header{
     background-color: PaleTurquoise;
     width: 60%;
     text-align: center;
-    border: solid 5pt DodgerBlue;
+    border: solid 4pt DodgerBlue;
     border-radius: 80px;
     padding: 1%;
+    margin-bottom: 10px;
 }
 nav ul {
     list-style-type: none;
@@ -27,41 +28,84 @@ nav li a {
 nav li a:hover {
     background-color: LightCyan;
 }
-footer {
-    bottom: 0;
-    background-color: PaleTurquoise;
-    border: solid 5pt DodgerBlue;
+footer{
     color: Blue;
-    border-radius: 80px;
-    height: 2em;
+    background-color: PaleTurquoise;
     left: 0;
+    width: 45%;
     text-align: center;
+    border: solid 4pt DodgerBlue;
+    border-radius: 80px;
     padding: 1%;
-    position: fixed;
-    width: 60%;
+    position: relative;
+    margin-top: 10px;
 }
 div#kodu {
     width: 35%;
     padding: 1%;
-    border: solid 5pt aqua;
-}
-div#kuupaev {
-    width: 35%;
-    padding: 1%;
-    border: solid 5pt aqua;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
 }
 div#euroopa {
     width: 15%;
     padding: 1%;
-    border: solid 5pt aqua;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
+}
+div#kuupaev {
+    width: 35%;
+    padding: 1%;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
 }
 div#tekstifunktsioonid {
     width: 35%;
     padding: 1%;
-    border: solid 5pt aqua;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
 }
 div#veebis {
     width: 35%;
     padding: 1%;
-    border: solid 5pt aqua;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
+}
+div#hooaeg{
+    width: 35%;
+    padding: 1%;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
+}
+div#koolivaheag{
+    width: 35%;
+    padding: 1%;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
+}
+div#sunnipaev{
+    width: 35%;
+    padding: 1%;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
+}
+div#vanus{
+    width: 35%;
+    padding: 1%;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
+}
+div#samatoo{
+    width: 35%;
+    padding: 1%;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
 }
