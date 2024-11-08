@@ -27,3 +27,14 @@ li a {
 li a:hover {
     background-color: LightCyan;
 }
+footer {
+    bottom: 0;
+    background-color: PaleTurquoise;
+    color: Blue;
+    height: 2em;
+    left: 0;
+    text-align: center;
+    padding: 1%;
+    position: fixed;
+    width: 100%;
+}

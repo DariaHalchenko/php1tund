@@ -19,13 +19,13 @@
         include('content/'.$_GET['leht']);
 
     } else {
-        echo "Tere tulemast!";
+        include('content/kodu.php');
     }
     ?>
 </section>
 <?php
-    echo "Daria Halchenko &copy;";
-    echo date('Y');
+//jalus
+include('footer.php');
 ?>
 </body>
 </html>

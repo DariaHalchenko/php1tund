@@ -44,11 +44,11 @@ echo "Sõnade arv lauses - ".str_word_count($tekst);
 //Iseseisvalt - teksti kärpimine
 $tekst2='Põhitoetus võitakse ära 11.11 kui võlgnevused ei ole parandatud';
 echo "<pre>".ltrim($tekst2)."</pre>";
-echo "<br>";
 echo trim($tekst2, "P, p, a..d, o");
 echo "<br>";
+echo "<br>";
 $tekst3 = 'A woman should soften but not weaken a man';
-echo "<pre>".ltrim($tekst3)."</pre>";
+echo ltrim($tekst3);
 echo "<br>";
 echo trim($tekst3, "A, a, k..n, w");
 // Iseseisvalt - Tekst kui massiiv
