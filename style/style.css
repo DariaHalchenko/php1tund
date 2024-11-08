@@ -1,40 +1,67 @@
-header, footer {
+header{
     color: Blue;
     background-color: PaleTurquoise;
-    width: 40%;
+    width: 60%;
     text-align: center;
     border: solid 5pt DodgerBlue;
     border-radius: 80px;
     padding: 1%;
 }
-ul {
+nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: SkyBlue;
 }
-li {
+nav li {
     float: left;
 }
-li a {
+nav li a {
     display: block;
     color: MediumBlue;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
-li a:hover {
+nav li a:hover {
     background-color: LightCyan;
 }
 footer {
     bottom: 0;
     background-color: PaleTurquoise;
+    border: solid 5pt DodgerBlue;
     color: Blue;
+    border-radius: 80px;
     height: 2em;
     left: 0;
     text-align: center;
     padding: 1%;
     position: fixed;
-    width: 100%;
+    width: 60%;
+}
+div#kodu {
+    width: 35%;
+    padding: 1%;
+    border: solid 5pt aqua;
+}
+div#kuupaev {
+    width: 35%;
+    padding: 1%;
+    border: solid 5pt aqua;
+}
+div#euroopa {
+    width: 15%;
+    padding: 1%;
+    border: solid 5pt aqua;
+}
+div#tekstifunktsioonid {
+    width: 35%;
+    padding: 1%;
+    border: solid 5pt aqua;
+}
+div#veebis {
+    width: 35%;
+    padding: 1%;
+    border: solid 5pt aqua;
 }

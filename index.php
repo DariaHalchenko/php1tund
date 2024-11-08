@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
-<header>
-    <h1>PHP tunnitööd</h1>
-</header>
+<?php
+//päis
+include('header.php');
+?>
 <?php
 //navigeerimismenüü
     include('nav.php');

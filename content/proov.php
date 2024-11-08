@@ -6,6 +6,7 @@ echo "<strong>";
 echo $muutuja;
 echo "</strong>";
 echo "<br>";
+echo "<div id='tekstifunktsioonid'>";
 // Tekstifunktsioonid
 echo "<h2>Tekstifunktsioonid!</h2>";
 $tekst ='Esmaspäev on 4.november';
@@ -37,7 +38,9 @@ echo substr($tekst,0,strpos($tekst,$otsing));
 echo "<br>";
 echo substr($tekst,strpos($tekst,$otsing));
 echo "<br>";
+echo "</div>";
 echo "<h2>Kasutame veebis kasutavaid näidised</h2>";
+echo "<div id='veebis'>";
 //Sõnade arv lauses
 echo "<br>";
 echo "Sõnade arv lauses - ".str_word_count($tekst);
@@ -65,3 +68,4 @@ echo "4.täht - ".$massivitekst[4]; //n
 $sona=str_word_count($massivitekst,1);
 print_r($sona);
 echo $sona [2];
+echo "</div>";
