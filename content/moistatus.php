@@ -23,7 +23,6 @@ echo "<li>Tähtede vahetus - ". substr_replace($riik, $asendus, $otsitav_algus, 
 echo "</ol>";
 echo "<br>";
 echo "<br>";
-echo "</div>";
 ?>
 <h2>Vastus</h2>
 <form method="post" action="">
@@ -43,6 +42,7 @@ if (isset($_POST["vastus"])) {
 }
 echo "<br>";
 echo "<br>";
+echo "</div>";
 highlight_file('moistatus.php');
 ?>
 
