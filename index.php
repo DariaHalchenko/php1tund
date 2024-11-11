@@ -18,7 +18,6 @@ include('header.php');
     <?php
     if(isset($_GET['leht'])){
         include('content/'.$_GET['leht']);
-
     } else {
         include('content/kodu.php');
     }

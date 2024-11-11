@@ -19,8 +19,8 @@ echo "<br>";
 echo "i - minutid 0 - 59";
 echo "</div>";
 ?>
+<h2>Väljasta vastavalt hooajale pilt (kevad/suvi/sügis/talv)</h2>
 <div id="hooaeg">
-    <h2>Väljasta vastavalt hooajale pilt (kevad/suvi/sügis/talv)</h2>
     <?php
     $today=new DateTime();
     echo "Täna on ".$today->format("m-d-Y");
@@ -59,8 +59,8 @@ echo "</div>";
     ?>
     <img src="<?=$pildi_aadress?>" alt='hooaja pilt'>
 </div>
+<h2>Mitu päeva on koolivaheajani 23.12.2024</h2>
 <div id="koolivaheag">
-    <h2>Mitu päeva on koolivaheajani 23.12.2024</h2>
     <?php
     $kdate =date_create_from_format('d.m.Y', '23.12.2024');
     $date=date_create();
@@ -70,8 +70,8 @@ echo "</div>";
     echo "Jääb ".$diff->days." päeva";
     ?>
 </div>
+<h2>Minu sünnipäev 6.10.2025</h2>
 <div id="sunnipaev">
-    <h2>Minu sünnipäev 6.10.2025</h2>
     <?php
     $kdate =date_create_from_format('d.m.Y', '6.10.2025');
     $date=date_create();
@@ -81,8 +81,8 @@ echo "</div>";
     echo "Jääb ".$diff->days." päeva";
     ?>
 </div>
+<h2>Kasutaja vanuse leidmine</h2>
 <div id="vanus">
-    <h2>Kasutaja vanuse leidmine</h2>
     <form method="post" action="">
         Sisesta oma sünnikuupäev
         <input type="date" name="synd" placeholder="dd.mm.yyyy">
@@ -102,8 +102,8 @@ echo "</div>";
     }
     ?>
 </div>
+<h2>Massivi abil näidata kuu nimega tänases kuupäevas</h2>
 <div id="samatoo">
-    <h2>Massivi abil näidata kuu nimega tänases kuupäevas</h2>
     <?php
     $kuud=array(1=>'jaanuar', 'veebruar', 'march','april','may','juni','juli', 'august', 'september', 'oktoober', 'november', 'december');
     $paev=date('d');

@@ -6,9 +6,9 @@ echo "<strong>";
 echo $muutuja;
 echo "</strong>";
 echo "<br>";
-echo "<div id='tekstifunktsioonid'>";
 // Tekstifunktsioonid
 echo "<h2>Tekstifunktsioonid!</h2>";
+echo "<div id='tekstifunktsioonid'>";
 $tekst ='Esmaspäev on 4.november';
 echo $tekst;
 //Kõik tähed on suured
