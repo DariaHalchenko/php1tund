@@ -109,7 +109,28 @@ div#samatoo{
     border: solid 3pt RoyalBlue;
     margin-top: 10px;
 }
-#pilt {
+div#pilt {
+    width: 35%;
+    padding: 1%;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
+}
+div#yl1 {
+    width: 35%;
+    padding: 1%;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
+}
+div#yl2 {
+    width: 35%;
+    padding: 1%;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
+}
+div#yl3 {
     width: 35%;
     padding: 1%;
     background-color: LightCyan;
