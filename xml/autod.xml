@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<autod>
+    <auto>
+        <mark>Mazda</mark>
+        <autonumber>123ABC</autonumber>
+        <omanik>Kask</omanik>
+        <v_aasta>2020</v_aasta>
+    </auto>
+    <auto>
+        <mark>BMW</mark>
+        <autonumber>666MAX</autonumber>
+        <omanik>Maks</omanik>
+        <v_aasta>2020</v_aasta>
+    </auto>
+    <auto>
+        <mark>Nissan</mark>
+        <autonumber>568ABC</autonumber>
+        <omanik>Vaher</omanik>
+        <v_aasta>2021</v_aasta>
+    </auto>
+    <auto>
+        <mark>Toyota</mark>
+        <autonumber>654VKD</autonumber>
+        <omanik>Valeria</omanik>
+        <v_aasta>2021</v_aasta>
+    </auto>
+    <auto>
+        <mark>Ford</mark>
+        <autonumber>543DCD</autonumber>
+        <omanik>Vlad</omanik>
+        <v_aasta>2022</v_aasta>
+    </auto>
+</autod>
