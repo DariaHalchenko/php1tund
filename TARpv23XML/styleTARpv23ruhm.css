@@ -1,0 +1,19 @@
+div#tarpv23 {
+    height: 50%;
+    width: 100%;
+    margin-top: 20px;
+}
+.opilased {
+    display: inline-flex;
+    justify-content: center; /*Центр текста по горизонтале*/
+    align-items: center; /*Центр текста по вертикале*/
+    width: 100px;
+    height: 100px;
+    border-radius: 60%;
+    color: black;
+    background-color: PeachPuff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 10px;
+}

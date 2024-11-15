@@ -15,8 +15,8 @@ function otsingAutonumbriJargi($paring){
 <!DOCTYPE html>
 <html lang="et">
 <head>
-    <link rel="stylesheet" href="styleXML.css">
     <title>Autode andmed XML failist</title>
+    <link rel="stylesheet" href="styleXML.css">
 </head>
 <body>
 <h2>Autode andmed XML failist</h2>

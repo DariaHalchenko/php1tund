@@ -1,0 +1,22 @@
+table#t1 {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 37%;
+    border: 5px solid RoyalBlue;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: Silver;
+}
+div#autod{
+    width: 35%;
+    padding: 1%;
+    background-color: LightCyan;
+    border: solid 3pt RoyalBlue;
+    margin-top: 10px;
+}
