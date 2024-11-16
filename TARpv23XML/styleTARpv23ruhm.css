@@ -1,19 +1,102 @@
-div#tarpv23 {
-    height: 50%;
-    width: 100%;
-    margin-top: 20px;
+body{
+    background: antiquewhite; /* Lehe taustavärv */
+}
+h1 {
+    letter-spacing: 5px;
+    text-shadow: 5px 5px  mediumvioletred; /* Teksti vari */
+    text-align: center;
+    font-size: 45px;
+    animation: mymove 5s infinite; /* Animatsioon kordub lõputult */
+}
+h2 {
+    letter-spacing: 5px;
+    text-shadow: 5px 5px  Crimson; /* Teksti vari */
+    text-align: center;
+    animation: mymove 5s infinite; /* Animatsioon kordub lõputult */
+}
+@keyframes mymove {
+    50% {
+        text-shadow: 10px 20px 10px Coral;
+    }
+}
+div#juuste_otsimine {
+    font-size: 20px;
+    background-color: BlanchedAlmond;
+    border: solid 3px LightSalmon;
+    padding: 10px;
+    border-radius: 20px;
+    width: 35%;
+}
+div#juuste_otsimine input {
+    padding: 10px;
+    font-size: 17px;
+    border: 3px solid darksalmon;
+}
+div#juuste_otsimine input[type="submit"] {
+    background-color: darksalmon;
+    color: white;
+    font-size: 18px;
 }
 .opilased {
     display: inline-flex;
-    justify-content: center; /*Центр текста по горизонтале*/
-    align-items: center; /*Центр текста по вертикале*/
-    width: 100px;
-    height: 100px;
+    justify-content: center; /* Teksti keskel horisontaalselt */
+    align-items: center; /* Teksti keskel vertikaalselt */
+    width: 200px;
+    height: 140px;
     border-radius: 60%;
-    color: black;
-    background-color: PeachPuff;
-    font-size: 16px;
+    letter-spacing: 3px;
+    font-family: 'Courier New', monospace;
     font-weight: bold;
+    color: black;
+    box-shadow: 10px 20px 30px darksalmon; /* Blocki vari */
+    animation: mymove1 5s infinite; /* Animatsioon kordub lõputult */
+    clip: rect(0, 100px, 100px, 0); /* Piirake nähtavat ala */
+    background-color: PeachPuff;
+    font-size: 20px;
     text-decoration: none;
-    margin: 10px;
+    margin: 25px;
+    transition: transform 0.3s ease; /* Sujuv suuruse muutmine */
+}
+
+@keyframes mymove1 {
+    50% {
+        clip: rect(0, 50px, 50px, 0); /* Nähtava ala vähendamine */
+    }
+}
+
+/* Suurenduse efekti lisamine hõljumisel */
+.opilased:hover {
+    transform: scale(1.2); /* Zoomi efekt hõljumisel, suurendage suurust 20% võrra */
+}
+div#lisamine {
+    font-size: 20px;
+    background-color: BlanchedAlmond;
+    border: solid 3px LightSalmon;
+    padding: 10px;
+    border-radius: 20px;
+    width: 35%;
+}
+div#lisamine input {
+    padding: 10px;
+    font-size: 15px;
+    border: 3px solid darksalmon;
+}
+div#lisamine input[type="submit"] {
+    background-color: darksalmon;
+    color: white;
+    font-size: 18px;
+}
+div#open {
+    font-size: 20px;
+    background-color: BlanchedAlmond;
+    border: solid 3px LightSalmon;
+    padding: 10px;
+    border-radius: 20px;
+    width: 35%;
+}
+div#open button[type="submit"] {
+    background-color: darksalmon;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
 }
