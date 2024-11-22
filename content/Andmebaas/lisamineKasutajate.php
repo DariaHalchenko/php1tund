@@ -1,5 +1,5 @@
 <?php
-require ('conf.php');
+require ('conf2.php');
 global $yhendus;
 //kustutamine
 if(isset($_REQUEST["kustuta"])){
@@ -30,6 +30,17 @@ function kalkulaator($birthDate) {
 }
 ?>
     <style>
+        footer{
+            color: Blue;
+            background-color: PaleTurquoise;
+            left: 0;
+            width: 45%;
+            text-align: center;
+            border: solid 4pt DodgerBlue;
+            border-radius: 80px;
+            padding: 1%;
+            margin-top: 10px;
+        }
         table {
             border-collapse: collapse;
             width: 50%;
@@ -49,7 +60,6 @@ function kalkulaator($birthDate) {
 </head>
 <body>
 <h2>Uue osaleja lisamine</h2>
-<a href="https://dariahalchenko23.thkit.ee/wp/andmebaas-php/">Wordpress</a>
 <table  border="2">
     <tr>
         <th></th>
@@ -99,3 +109,10 @@ while($paring->fetch()){
 <?php
 $yhendus->close();
 ?>
+<footer>
+    <?php
+    echo "Daria Halchenko &copy;";
+    echo date('Y');
+    ?>
+    <a href="https://dariahalchenko23.thkit.ee/wp/andmebaas-php/">Wordpress</a>
+</footer>
