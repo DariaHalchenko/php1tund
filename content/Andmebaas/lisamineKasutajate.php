@@ -113,6 +113,7 @@ $yhendus->close();
     <?php
     echo "Daria Halchenko &copy;";
     echo date('Y');
-    ?>
+    ?> 
+    <br>
     <a href="https://dariahalchenko23.thkit.ee/wp/andmebaas-php/">Wordpress</a>
 </footer>
