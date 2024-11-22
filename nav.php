@@ -24,5 +24,8 @@
         <li>
             <a href="TARpv23XML/TARpv23opilased.php" target="_blank">TARpv23 rühm</a>
         </li>
+        <li>
+            <a href="content/Andmebaas/lisamineKasutajate.php" target="_blank">Andmebaas</a>
+        </li>
     </ul>
 </nav>
