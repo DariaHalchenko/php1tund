@@ -27,5 +27,8 @@
         <li>
             <a href="content/Andmebaas/lisamineKasutajate.php" target="_blank">Andmebaas</a>
         </li>
+        <li>
+            <a href="content/Andmebaas/matkajad.php" target="_blank">Matkajad</a>
+        </li>
     </ul>
 </nav>

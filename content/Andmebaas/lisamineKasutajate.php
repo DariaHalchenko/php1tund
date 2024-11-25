@@ -1,5 +1,5 @@
 <?php
-require ('conf2.php');
+require ('conf.php');
 global $yhendus;
 //kustutamine
 if(isset($_REQUEST["kustuta"])){
@@ -29,34 +29,13 @@ function kalkulaator($birthDate) {
     return $intervall->y;
 }
 ?>
-    <style>
-        footer{
-            color: Blue;
-            background-color: PaleTurquoise;
-            left: 0;
-            width: 45%;
-            text-align: center;
-            border: solid 4pt DodgerBlue;
-            border-radius: 80px;
-            padding: 1%;
-            margin-top: 10px;
-        }
-        table {
-            border-collapse: collapse;
-            width: 50%;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        tr:hover {background-color: Cornsilk;}
-    </style>
+
 <!DOCTYPE html>
 <html lang="et">
 <html>
 <head>
     <title>Tabeli sisu, mida võetakse andmebaasist</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h2>Uue osaleja lisamine</h2>

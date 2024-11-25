@@ -38,7 +38,6 @@ $paring->execute();
 <html lang="et">
 <html>
 <head>
-
     <title>Tabeli sisu, mida võetakse andmebaasist</title>
 </head>
 <body>

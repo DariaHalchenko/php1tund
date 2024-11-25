@@ -1,0 +1,123 @@
+/* Общий стиль */
+body {
+    background-color: LavenderBlush;
+}
+
+header {
+    color: Black;
+    background-color: MistyRose;
+    width: 40%;
+    text-align: center;
+    border: solid 4pt HotPink;
+    border-radius: 80px;
+    padding: 1%;
+    margin-bottom: 10px;
+}
+
+footer {
+    color: Black;
+    background-color: MistyRose;
+    left: 0;
+    width: 45%;
+    text-align: center;
+    border: solid 4pt HotPink;
+    border-radius: 80px;
+    padding: 1%;
+    position: relative;
+    margin-top: 10px;
+}
+main {
+    display: flex;
+    flex-direction: row; /* Размещение таблицы и информации горизонтально */
+    justify-content: flex-start; /* Выравнивание элементов слева */
+    align-items: flex-start; /* Выравнивание по верхнему краю */
+    padding: 20px;
+    gap: 15px; /* Уменьшено расстояние между таблицей и информацией */
+}
+#table-container {
+    flex: 1;
+}
+
+table {
+    width: 100%;
+    max-width: 500px;
+    border-spacing: 15px;
+}
+
+table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+table img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#info {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 400px;
+}
+
+#info h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+#info a {
+    display: inline-block;
+    margin-top: 10px;
+    color: red;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#info a:hover {
+    text-decoration: underline;
+}
+form {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type=submit] {
+    background-color: MediumVioletRed;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+input[type=text],
+textarea {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 5px 0;
+    border: 3px solid MediumVioletRed;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form textarea {
+    resize: none;
+}
