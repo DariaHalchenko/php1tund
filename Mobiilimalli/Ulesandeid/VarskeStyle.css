@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+    color: #333;
+}
+h1 {
+    text-align: center;
+    font-size: 1.8em;
+    margin: 20px 10px;
+}
+.sonum {
+    text-align: center;
+    margin: 20px 10px;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.2em;
+}
+.footer {
+    text-align: right;
+    padding: 10px 15px;
+    font-size: 0.9em;
+    background: #eeeeee;
+}
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    .message {
+        font-size: 1em;
+        margin: 10px;
+    }
+    .footer {
+        text-align: center;
+        font-size: 0.8em;
+    }
+}
