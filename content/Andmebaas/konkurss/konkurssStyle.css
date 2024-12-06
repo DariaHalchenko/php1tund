@@ -1,20 +1,12 @@
-body {
+body{
     background-color: AliceBlue;
-}
-footer{
-    color: Blue;
-    background-color: PaleTurquoise;
-    left: 0;
-    width: 50%;
-    text-align: center;
-    border: solid 4pt DodgerBlue;
-    border-radius: 80px;
-    padding: 1%;
-    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 table {
     border-collapse: collapse;
-    width: 50%;
+    width: 60%;
 }
 th, td {
     padding: 8px;
@@ -49,37 +41,47 @@ textarea{
     border-radius: 4px;
     font-size: 16px;
 }
-ul{
+nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: DodgerBlue;
 }
-a:hover {
-    text-decoration: underline;
-}
-#meny {
-    background-color: LightSkyBlue;
-    color: white;
-    padding: 10px;
-}
-#sisu {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    padding: 20px;
-    left: 20%;
-}
-a:link, a:visited {
-    background-color: deepskyblue;
-    color: white;
-    padding: 14px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    width: 50%;
+nav li {
+    float: left;
 }
 
-a:hover, a:active {
-    background-color: #007bff;
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 12px;
+    text-decoration: none;
+}
+nav li a:hover {
+    background-color: DeepSkyBlue;
+    color: black;
+}
+header {
+    color: Black;
+    background-color: LightCyan;
+    width: 40%;
+    text-align: center;
+    border: solid 4pt DodgerBlue;
+    border-radius: 80px;
+    padding: 1%;
+    margin-bottom: 10px;
+}
+footer {
+    color: Black;
+    background-color: LightCyan;
+    left: 0;
+    width: 45%;
+    text-align: center;
+    border: solid 4pt DodgerBlue;
+    border-radius: 80px;
+    padding: 1%;
+    position: relative;
+    margin-top: 10px;
 }

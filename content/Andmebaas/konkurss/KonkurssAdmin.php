@@ -1,6 +1,18 @@
 <?php
 require ('conf.php');
 global $yhendus;
+// laulu peitmine
+if(isset($_REQUEST["peitmine_id"])) {
+    $paring = $yhendus->prepare("Update konkurss SET avalik=0 WHERE id=?");
+    $paring->bind_param('i', $_REQUEST["peitmine_id"]);
+    $paring->execute();
+}
+// laulu kuvamine/näitmine
+if(isset($_REQUEST["naitmine_id"])) {
+    $paring = $yhendus->prepare("Update konkurss SET avalik=1 WHERE id=?");
+    $paring->bind_param('i', $_REQUEST["naitmine_id"]);
+    $paring->execute();
+}
 //konkurssi lisamine
 if(!empty($_REQUEST["uusKonkurss"])){
     $paring=$yhendus->prepare("INSERT INTO konkurss (konkursiNimi, lisamisaeg) 
@@ -27,18 +39,6 @@ if(isset($_REQUEST["nullidakonkurss_id"])) {
     $paring->bind_param('i', $_REQUEST["nullidakonkurss_id"]);
     $paring->execute();
 }
-// 	avalik = 1 - näita
-if(isset($_REQUEST["näita"])) {
-    $paring = $yhendus->prepare("Update konkurss SET avalik=1 WHERE id=?");
-    $paring->bind_param('i', $_REQUEST["näita"]);
-    $paring->execute();
-}
-// 	avalik = 0 - peida
-if(isset($_REQUEST["peida"])) {
-    $paring = $yhendus->prepare("Update konkurss SET avalik=0 WHERE id=?");
-    $paring->bind_param('i', $_REQUEST["peida"]);
-    $paring->execute();
-}
 ?>
 <!DOCTYPE html>
 <html lang="et">
@@ -48,11 +48,14 @@ if(isset($_REQUEST["peida"])) {
     <link rel="stylesheet" href="konkurssStyle.css">
 </head>
 <body>
-<h1>TARpv23 jõulu konkursid</h1>
+<header>
+    <h1>TARpv23 jõulu konkursid</h1>
+</header>
 <nav>
     <ul>
         <li><a href="KonkurssAdmin.php">Admin</a></li>
         <li><a href="KonkurssKasutaja.php">Kasutaja</a></li>
+        <li><a href="Konkurss1kaupa.php">Konkurss 1 kaupa</a></li>
     </ul>
 </nav>
 <form action="?">
@@ -60,7 +63,7 @@ if(isset($_REQUEST["peida"])) {
     <input type="text" name="uusKonkurss" id="uusKonkurss">
     <input type="submit" value="OK">
 </form>
-<br><br><br>
+<br><br><br><br>
 <table border="1">
     <tr>
         <th>KonkursiNimi</th>
@@ -68,7 +71,7 @@ if(isset($_REQUEST["peida"])) {
         <th>Punktid</th>
         <th>Avalik</th>
         <th colspan="2">Kommentaarid</th>
-        <th colspan="3">Haldus</th>
+        <th colspan="4">Haldus</th>
     </tr>
     <?php
     //tabeli sisu kuvamine
@@ -92,10 +95,19 @@ if(isset($_REQUEST["peida"])) {
             </form>
         </td>
         <?php
-        echo "<td><a href='?nullidakonkurss_id=$id'>Nullida</a></td>";
-        echo "<td><a href='?näita=$id'>Näita</a></td>";
-        echo "<td><a href='?peida=$id'>Peida</a></td>";
-        echo "<td><a href='?kustuta=$id'>Kustuta</a></td>";
+        echo "<td><a href='?nullidakonkurss_id=$id' class='link-button'>Nullida</a></td>";
+        echo "<td><a href='?kustuta=$id' class='link-button'>Kustuta</a></td>";
+        //ava/peida nupud
+        $avamistekst="Ava";
+        $avamisparam="naitmine_id";
+        $avamisseisund="Peidetud";
+        if($avalik===1){
+            $avamistekst="Peida";
+            $avamisparam="peitmine_id";
+            $avamisseisund="Näidetud";
+        }
+        echo "<td><a href='?$avamisparam=$id'>$avamistekst</a></td>";
+        echo "<td>$avamisseisund</td>";
         echo "</tr>";
     }
     ?>
@@ -104,3 +116,10 @@ if(isset($_REQUEST["peida"])) {
 </html>
 <?php
 $yhendus->close();
+?>
+<footer>
+    <?php
+    echo "Daria Halchenko &copy;";
+    echo date('Y');
+    ?>
+</footer>

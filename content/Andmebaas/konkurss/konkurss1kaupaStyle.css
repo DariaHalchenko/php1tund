@@ -1,0 +1,187 @@
+body {
+    background-color: AliceBlue;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: DodgerBlue;
+}
+nav li {
+    float: left;
+}
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 12px;
+    text-decoration: none;
+}
+nav li a:hover {
+    background-color: DeepSkyBlue;
+    color: black;
+}
+header {
+    color: Black;
+    background-color: LightCyan;
+    width: 40%;
+    text-align: center;
+    border: solid 4pt DodgerBlue;
+    border-radius: 80px;
+    padding: 1%;
+    margin-bottom: 10px;
+}
+footer {
+    color: Black;
+    background-color: LightCyan;
+    left: 0;
+    width: 45%;
+    text-align: center;
+    border: solid 4pt DodgerBlue;
+    border-radius: 80px;
+    padding: 1%;
+    position: relative;
+    margin-top: 10px;
+}
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 10px;
+}
+#konkurss {
+    flex: 1;
+    background-color: PowderBlue;
+    padding: 10px;
+    border: 2px solid DodgerBlue;
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 45%;
+}
+#konkurss h2 {
+    margin-top: 0;
+    text-align: center;
+    color: Blue;
+    font-size: 16px;
+}
+#konkurss ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#konkurss li {
+    margin-bottom: 5px;
+    background-color: LightSkyBlue;
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    transition: 0.3s;
+}
+#konkurss li:hover {
+    background-color: LightCyan;
+    color: white;
+    cursor: pointer;
+}
+#info {
+    flex: 1;
+    background-color: MintCream;
+    border: 2px solid LightSkyBlue;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 45%;
+}
+#info h2 {
+    text-align: center;
+    color: DodgerBlue;
+    font-size: 16px;
+}
+#info p {
+    margin: 5px 0;
+    line-height: 1.4;
+}
+#info input[type="text"],
+#info textarea {
+    width: 100%;
+    padding: 6px;
+    margin: 5px 0;
+    border: 2px solid LightSkyBlue;
+    border-radius: 5px;
+    font-size: 14px;
+}
+#info input[type="submit"] {
+    background-color: DodgerBlue;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 5px auto;
+}
+#info input[type="submit"]:hover {
+    background-color: RoyalBlue;
+}
+#lisa {
+    background-color: MintCream;
+    padding: 10px;
+    border: 2px solid DodgerBlue;
+    border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 45%;
+}
+#lisa h2 {
+    text-align: center;
+    color: DodgerBlue;
+    font-size: 16px;
+}
+#lisa form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+#lisa input[type="text"],
+#lisa textarea {
+    width: 100%;
+    padding: 6px;
+    border: 2px solid LightSkyBlue;
+    border-radius: 5px;
+    font-size: 14px;
+}
+#lisa input[type="submit"] {
+    background-color: DodgerBlue;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 5px auto;
+}
+#lisa input[type="submit"]:hover {
+    background-color: RoyalBlue;
+}
+button.ok-button {
+    background-color: DodgerBlue;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 5px auto;
+}
+button.ok-button:hover {
+    background-color: RoyalBlue;
+}

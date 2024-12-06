@@ -86,9 +86,9 @@ if(isset($_REQUEST["halvastikonkurss_id"])) {
             </form>
         </td>
         <?php
-        echo "<td><a href='?heakonkurss_id=$id'>Lisa +1 punkt</a></td>";
-        echo "<td><a href='?halvastikonkurss_id=$id'>-1 punkt</a></td>";
-        echo "<td><a href='?kustuta=$id'>Kustuta</a></td>";
+        echo "<td><a href='?heakonkurss_id=$id' class='link-button'>Lisa +1 punkt</a></td>";
+        echo "<td><a href='?halvastikonkurss_id=$id' class='link-button'>-1 punkt</a></td>";
+        echo "<td><a href='?kustuta=$id' class='link-button'>Kustuta</a></td>";
         echo "</tr>";
     }
     ?>

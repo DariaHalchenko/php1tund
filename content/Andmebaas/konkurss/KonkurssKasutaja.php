@@ -37,11 +37,14 @@ if(isset($_REQUEST["halvastikonkurss_id"])) {
     <link rel="stylesheet" href="konkurssStyle.css">
 </head>
 <body>
-<h1>TARpv23 jõulu konkursid</h1>
+<header>
+    <h1>TARpv23 jõulu konkursid</h1>
+</header>
 <nav>
     <ul>
         <li><a href="KonkurssAdmin.php">Admin</a></li>
         <li><a href="KonkurssKasutaja.php">Kasutaja</a></li>
+        <li><a href="Konkurss1kaupa.php">Konkurss 1 kaupa</a></li>
     </ul>
 </nav>
 <form action="?">
@@ -49,7 +52,7 @@ if(isset($_REQUEST["halvastikonkurss_id"])) {
     <input type="text" name="uusKonkurss" id="uusKonkurss">
     <input type="submit" value="OK">
 </form>
-<br><br><br>
+<br><br><br><br>
 <table border="1">
     <tr>
         <th>KonkursiNimi</th>
@@ -60,8 +63,8 @@ if(isset($_REQUEST["halvastikonkurss_id"])) {
     </tr>
     <?php
     //tabeli sisu kuvamine
-    $paring=$yhendus->prepare("SELECT id, konkursiNimi, lisamisaeg, punktid, kommentaarid FROM konkurss");
-    $paring->bind_result($id, $konkurssnimi, $lisamisaeg, $punktid, $kommentaarid);
+    $paring = $yhendus->prepare("SELECT id, konkursiNimi, lisamisaeg, punktid, kommentaarid, avalik FROM konkurss WHERE avalik = 1");
+    $paring->bind_result($id, $konkurssnimi, $lisamisaeg, $punktid, $kommentaarid, $avalik);
     $paring->execute();
     while($paring->fetch()){
         echo "<tr>";
@@ -80,8 +83,8 @@ if(isset($_REQUEST["halvastikonkurss_id"])) {
             </form>
         </td>
         <?php
-        echo "<td><a href='?heakonkurss_id=$id'>Lisa +1 punkt</a></td>";
-        echo "<td><a href='?halvastikonkurss_id=$id'>-1 punkt</a></td>";
+        echo "<td><a href='?heakonkurss_id=$id' class='link-button'>Lisa +1 punkt</a></td>";
+        echo "<td><a href='?halvastikonkurss_id=$id' class='link-button'>-1 punkt</a></td>";
         echo "</tr>";
     }
     ?>
@@ -90,3 +93,10 @@ if(isset($_REQUEST["halvastikonkurss_id"])) {
 </html>
 <?php
 $yhendus->close();
+?>
+<footer>
+    <?php
+    echo "Daria Halchenko &copy;";
+    echo date('Y');
+    ?>
+</footer>
