@@ -1,0 +1,75 @@
+table {
+    border: 1px solid #ff66a3;
+    width: 50%;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #ff66a3;
+    background-color: #ffe6f2;
+    color: black;
+}
+
+.link-button {
+    background-color: #ffb3d9;
+    border: 1px solid #ff66a3;
+    padding: 5px;
+    color: black;
+    border-radius: 20px;
+}
+
+th {
+    padding: 10px;
+    border: 1px solid #ff66a3;
+    background-color: #ff80bf;
+    color: black;
+}
+
+header {
+    color: #11120D;
+    background: linear-gradient(90deg, #ffb3d9, #ff80bf);
+    left: 0;
+    width: 45%;
+    text-align: center;
+    border: solid 3pt white;
+    border-radius: 90px;
+    padding: 10px;
+    margin: 0 auto;
+    position: relative;
+}
+
+div#kl {
+    padding: 5px;
+    background: #ffb3d9;
+    width: 100%;
+    position: relative;
+}
+
+#kaubalisamine, #grupilisamine {
+    background-color: #ffe6f2;
+    border: 1px solid #ff66a3;
+    padding: 5px;
+    color: black;
+    border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+    }
+
+    header {
+        width: 80%;
+        font-size: 1.5em;
+    }
+
+    #kaubalisamine, #grupilisamine {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .link-button {
+        width: 100%;
+        padding: 10px;
+    }
+}
