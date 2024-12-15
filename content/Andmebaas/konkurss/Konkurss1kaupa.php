@@ -49,6 +49,8 @@ if (isset($_REQUEST["halvastikonkurss_id"])) {
         <li><a href="KonkurssAdmin.php">Admin</a></li>
         <li><a href="KonkurssKasutaja.php">Kasutaja</a></li>
         <li><a href="Konkurss1kaupa.php">Konkurss 1 kaupa</a></li>
+        <li><a href="login.php">Sisse loogimine</a></li>
+        <li><a href="signup.php">Registreerimine</a></li>
     </ul>
 </nav>
 <br><br><br><br>
