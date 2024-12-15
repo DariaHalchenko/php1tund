@@ -56,6 +56,8 @@ if(isset($_REQUEST["nullidakonkurss_id"])) {
         <li><a href="KonkurssAdmin.php">Admin</a></li>
         <li><a href="KonkurssKasutaja.php">Kasutaja</a></li>
         <li><a href="Konkurss1kaupa.php">Konkurss 1 kaupa</a></li>
+        <li><a href="Sisselogimisvorm/login.inc.php">Konkurss 1 kaupa</a></li>
+        <li><a href="Sisselogimisvorm/signup.inc.php">Konkurss 1 kaupa</a></li>
     </ul>
 </nav>
 <form action="?">
