@@ -22,7 +22,7 @@
                     <h2>Registreerimine</h2>
                     <p>Palun täitke allolevad väljad, et registreeruda</p>
                 </header>
-                <form action="user_handler/signup.inc.php" method="post">
+                <form action="Sisselogimisvorm/signup.inc.php" method="post">
                     <div class="field-set">
                         <span class="input-item"><i class="fa fa-user-circle"></i></span>
                         <input class="form-input" type="text" name="name" placeholder="Nimi" required>

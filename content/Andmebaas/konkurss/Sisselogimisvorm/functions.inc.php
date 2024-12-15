@@ -48,7 +48,7 @@ function emailExists($conn, $email)
 
     if( !mysqli_stmt_prepare($stmt, $sql) )
     {
-        header("location: ../content/Andmebaas/konkurss/Sisselogimisvorm/signup.php?error=stmtfailed");
+        header("location: ../signup.php?error=stmtfailed");
         exit();
     }
 
@@ -77,7 +77,7 @@ function createUser($conn, $name, $email, $username, $pwd)
 
     if ( !mysqli_stmt_prepare($stmt, $sql) )
     {
-        header("location: ../content/Andmebaas/konkurss/Sisselogimisvorm/signup.php?error=stmtfailed");
+        header("location: ../signup.php?error=stmtfailed");
         exit();
     }
 
@@ -87,7 +87,7 @@ function createUser($conn, $name, $email, $username, $pwd)
 
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../content/Andmebaas/konkurss/Sisselogimisvorm/signup.php?error=none");
+    header("location: ../signup.php?error=none");
     exit();
 }
 
@@ -100,7 +100,7 @@ function usernameExists($conn, $username)
 
     if( !mysqli_stmt_prepare($stmt, $sql) )
     {
-        header("location: ../content/Andmebaas/konkurss/Sisselogimisvorm/signup.php?error=stmtfailed");
+        header("location: ../signup.php?error=stmtfailed");
         exit();
     }
 
@@ -137,7 +137,7 @@ function loginUser($conn, $username, $pwd)
 
     if ($usernameExists === false)
     {
-        header("location: ../content/Andmebaas/konkurss/Sisselogimisvorm/login.php?error=wronglogin");
+        header("location: ../login.php?error=wronglogin");
         exit();
     }
 
@@ -146,7 +146,7 @@ function loginUser($conn, $username, $pwd)
 
     if ($checkPassword === false )
     {
-        header("location: ../content/Andmebaas/konkurss/Sisselogimisvorm/login.php?error=wronglogin");
+        header("location: ../login.php?error=wronglogin");
         exit();
     }
     else if ($checkPassword === true )
@@ -154,7 +154,7 @@ function loginUser($conn, $username, $pwd)
         session_start();
         $_SESSION["userid"] = $usernameExists["usersId"];
         $_SESSION["useruid"] = $usernameExists["usersUid"];
-        header("location: ../content/Andmebaas/konkurss/Sisselogimisvorm/konkursAdminLeht.php");
+        header("location: ../KonkurssAdmin.php");
         exit();
     }
 }

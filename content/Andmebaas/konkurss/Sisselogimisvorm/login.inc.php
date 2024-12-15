@@ -5,12 +5,12 @@ if (isset($_POST["submit"]))
     $pwd = $_POST["pwd"];
 
     require_once 'functions.inc.php';
-    require_once '../content/Andmebaas/konkurss/conf2.php';
+    require_once '../conf2.php';
     global $yhendus;
 
     if(emptyInputLogin($username, $pwd) )
     {
-        header("location: ../content/Andmebaas/konkurss/Sisselogimisvorm/login.php?error=emptyinput");
+        header("location: ../login.php?error=emptyinput");
         exit();
     }
 
@@ -18,6 +18,6 @@ if (isset($_POST["submit"]))
 }
 else
 {
-    header("location: ../content/Andmebaas/konkurss/Sisselogimisvorm/login.php");
+    header("location: ../login.php");
     exit();
 }
