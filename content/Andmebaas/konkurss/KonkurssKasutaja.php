@@ -1,4 +1,5 @@
 <?php
+session_start();
 require ('conf.php');
 global $yhendus;
 //konkurssi lisamine
@@ -42,11 +43,22 @@ if(isset($_REQUEST["halvastikonkurss_id"])) {
 </header>
 <nav>
     <ul>
-        <li><a href="KonkurssAdmin.php">Admin</a></li>
+        <?php
+        if (isset($_SESSION['useruid'])) {
+            echo '<li><a href="KonkurssAdmin.php">Admin</a></li>';
+        }
+        ?>
         <li><a href="KonkurssKasutaja.php">Kasutaja</a></li>
-        <li><a href="Konkurss1kaupa.php">Konkurss 1 kaupa</a></li>
-        <li><a href="login.php">Sisse loogimine</a></li>
-        <li><a href="signup.php">Registreerimine</a></li>
+        <li><a href="konkurss1kaupa.php">Konkurss 1 kaupa</a></li>
+        <?php
+        if (!isset($_SESSION['useruid'])) {
+            echo '<li><a href="login.php">Sisse loogimine</a></li>';
+            echo '<li><a href="signup.php">Registreerimine</a></li>';
+        }
+        else {
+            echo '<li><a href="Sisselogimisvorm/logout.inc.php">Logi välja</a></li>';
+        }
+        ?>
     </ul>
 </nav>
 <form action="?">

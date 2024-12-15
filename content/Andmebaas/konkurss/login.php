@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="et">
 <head>
@@ -16,7 +19,7 @@
 </nav>
 <main>
     <div class="overlay">
-        <form action="user_handler/login.inc.php" method="post">
+        <form action="Sisselogimisvorm/login.inc.php" method="post">
             <div class="con">
                 <header class="head-form">
                     <h2>Sisse loogimine</h2>

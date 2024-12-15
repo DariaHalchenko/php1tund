@@ -8,7 +8,7 @@ if( isset($_POST["submit"]) )
     $pwdRepeat = $_POST["pwdrepeat"];
 
     require_once 'functions.inc.php';
-    require_once '../conf2.php';
+    require_once '../conf.php';
     global $yhendus;
 
     if( emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat) !== false )

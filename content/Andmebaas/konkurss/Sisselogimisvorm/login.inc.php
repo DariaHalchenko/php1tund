@@ -5,7 +5,7 @@ if (isset($_POST["submit"]))
     $pwd = $_POST["pwd"];
 
     require_once 'functions.inc.php';
-    require_once '../conf2.php';
+    require_once '../conf.php';
     global $yhendus;
 
     if(emptyInputLogin($username, $pwd) )
