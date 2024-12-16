@@ -1,23 +1,17 @@
 <?php
-if (isset($_POST["submit"]))
-{
+if (isset($_POST["submit"])) {
     $username = $_POST["uid"];
     $pwd = $_POST["pwd"];
 
     require_once 'functions.inc.php';
     require_once '../conf.php';
     global $yhendus;
-
-    if(emptyInputLogin($username, $pwd) )
-    {
+    if (emptyInputLogin($username, $pwd)) {
         header("location: ../login.php?error=emptyinput");
         exit();
     }
-
     loginUser($yhendus, $username, $pwd);
-}
-else
-{
+} else {
     header("location: ../login.php");
     exit();
 }

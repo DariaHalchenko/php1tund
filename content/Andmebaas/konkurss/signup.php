@@ -10,22 +10,31 @@ session_start();
 <body>
 <nav>
     <ul>
-        <li><a href="KonkurssAdmin.php">Admin</a></li>
-        <li><a href="KonkurssKasutaja.php">Kasutaja</a></li>
-        <li><a href="Konkurss1kaupa.php">Konkurss 1 kaupa</a></li>
-        <li><a href="login.php">Sisse loogimine</a></li>
-        <li><a href="signup.php">Registreerimine</a></li>
+        <?php
+        if (isset($_SESSION['useruid']) && isset($_SESSION['rolli'])) {
+            if ($_SESSION['rolli'] == 1) {
+                echo '<li><a href="KonkurssAdmin.php">Admin</a></li>';
+            } else if ($_SESSION['rolli'] == 0) {
+                echo '<li><a href="KonkurssKasutaja.php">Kasutaja</a></li>';
+                echo '<li><a href="konkurss1kaupa.php">Konkurss 1 kaupa</a></li>';
+            }
+            echo '<li><a href="Sisselogimisvorm/logout.inc.php">Logi välja (' . htmlspecialchars($_SESSION['useruid']) . ')</a></li>';
+        } else {
+            echo '<li><a href="login.php">Sisse loogimine</a></li>';
+            echo '<li><a href="signup.php">Registreerimine</a></li>';
+        }
+        ?>
     </ul>
 </nav>
 <main>
     <div class="overlay">
         <section class="signup-form">
-            <div class="con">
-                <header class="head-form">
-                    <h2>Registreerimine</h2>
-                    <p>Palun täitke allolevad väljad, et registreeruda</p>
-                </header>
                 <form action="Sisselogimisvorm/signup.inc.php" method="post">
+                    <div class="con">
+                        <header class="head-form">
+                            <h2>Registreerimine</h2>
+                            <p>Palun täitke allolevad väljad, et registreeruda</p>
+                        </header>
                     <div class="field-set">
                         <span class="input-item"><i class="fa fa-user-circle"></i></span>
                         <input class="form-input" type="text" name="name" placeholder="Nimi" required>
@@ -47,36 +56,42 @@ session_start();
                         <input class="form-input" type="password" name="pwdrepeat" placeholder="Korda parool" required>
                     </div>
                     <div class="field-set">
-                        <button class="log-in" type="submit" name="submit">Registreeri</button>
+                        <button class="log-in" type="submit" name="submit">Registreeri</button><br><br>
                     </div>
                     <?php
                     if (isset($_GET["error"])) {
                         if ($_GET["error"] == "emptyinput") {
-                            echo "<p>Palun täitke kõik väljad!</p>";
+                            echo "<p class='error-message'>Ei ole täidetud kõik väljad</p>";
                         }
                         if ($_GET["error"] == "invalidusername") {
-                            echo "<p>Kasutajanimi sisaldab kehtetuid märke.</p>";
+                            echo "<p class='error-message'>Kasutajanimi omab lubamatuid sümboleid</p>";
                         }
                         if ($_GET["error"] == "invalidemail") {
-                            echo "<p>Kehtetu e-posti aadress.</p>";
+                            echo "<p class='error-message'>E-posti aadressi vale formaat</p>";
                         }
                         if ($_GET["error"] == "passwordmismatch") {
-                            echo "<p>Te sisestasite kaks erinevat parooli.</p>";
+                            echo "<p class='error-message'>Paroolid ei klapi</p>";
                         }
                         if ($_GET["error"] == "usernametaken") {
-                            echo "<p>Vabandust, see kasutajanimi on juba hõivatud.</p>";
+                            echo "<p class='error-message'>Kasutajanimi on juba kasutusel</p>";
                         }
                         if ($_GET["error"] == "stmtfailed") {
-                            echo "<p>Midagi läks valesti, proovige hiljem uuesti.</p>";
+                            echo "<p class='error-message'>Tekkis viga, proovige hiljem</p>";
                         }
                         if ($_GET["error"] == "emailregistered") {
-                            echo "<p>Te olete selle e-posti aadressiga juba registreerunud.</p>";
+                            echo "<p class='error-message'>Email on juba registreeritud</p>";
                         }
                         if ($_GET["error"] == "none") {
-                            echo "<p>Teid registreeriti. Tere tulemast!</p>";
+                            echo "<p class='error-message1'>Teid registreeriti. Tere tulemast!</p>";
                         }
                     }
                     ?>
+                        <footer><br>
+                            <?php
+                            echo "Daria Halchenko &copy;";
+                            echo date('Y');
+                            ?>
+                        </footer>
                 </form>
             </div>
         </section>

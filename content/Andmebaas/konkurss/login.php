@@ -10,11 +10,20 @@ session_start();
 <body>
 <nav>
     <ul>
-        <li><a href="KonkurssAdmin.php">Admin</a></li>
-        <li><a href="KonkurssKasutaja.php">Kasutaja</a></li>
-        <li><a href="Konkurss1kaupa.php">Konkurss 1 kaupa</a></li>
-        <li><a href="login.php">Sisse loogimine</a></li>
-        <li><a href="signup.php">Registreerimine</a></li>
+        <?php
+        if (isset($_SESSION['useruid']) && isset($_SESSION['rolli'])) {
+            if ($_SESSION['rolli'] == 1) {
+                echo '<li><a href="KonkurssAdmin.php">Admin</a></li>';
+            } else if ($_SESSION['rolli'] == 0) {
+                echo '<li><a href="KonkurssKasutaja.php">Kasutaja</a></li>';
+                echo '<li><a href="konkurss1kaupa.php">Konkurss 1 kaupa</a></li>';
+            }
+            echo '<li><a href="Sisselogimisvorm/logout.inc.php">Logi välja (' . htmlspecialchars($_SESSION['useruid']) . ')</a></li>';
+        } else {
+            echo '<li><a href="login.php">Sisse loogimine</a></li>';
+            echo '<li><a href="signup.php">Registreerimine</a></li>';
+        }
+        ?>
     </ul>
 </nav>
 <main>
@@ -34,7 +43,7 @@ session_start();
                     <input class="form-input" type="password" placeholder="Parool" id="pwd" name="pwd" required>
                 </div>
                 <div class="field-set">
-                    <button class="log-in" type="submit" name="submit">Loogi sisse</button>
+                    <button class="log-in" type="submit" name="submit">Loogi sisse</button><br><br>
                 </div>
                 <?php
                 if (isset($_GET["error"])) {
@@ -47,13 +56,13 @@ session_start();
                 }
                 ?>
             </div>
+            <footer>
+                <?php
+                echo "Daria Halchenko &copy;";
+                echo date('Y');
+                ?>
+            </footer>
         </form>
-        <footer>
-            <?php
-            echo "Daria Halchenko &copy;";
-            echo date('Y');
-            ?>
-        </footer>
     </div>
 </main>
 </body>

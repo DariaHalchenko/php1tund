@@ -71,7 +71,7 @@ function emailExists($conn, $email)
 
 function createUser($conn, $name, $email, $username, $pwd)
 {
-    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd) VALUES (?, ?, ?, ?);";
+    $sql = "INSERT INTO users (usersName, usersEmail, usersUid, usersPwd, rolli) VALUES (?, ?, ?, ?, 0);";
 
     $stmt = mysqli_stmt_init($conn);
 
@@ -131,12 +131,12 @@ function emptyInputLogin($username, $pwd)
     }
     return $result;
 }
+
 function loginUser($conn, $username, $pwd)
 {
     $usernameExists = usernameExists($conn, $username);
 
-    if ($usernameExists === false)
-    {
+    if ($usernameExists === false) {
         header("location: ../login.php?error=wronglogin");
         exit();
     }
@@ -144,17 +144,19 @@ function loginUser($conn, $username, $pwd)
     $hashedPassword = $usernameExists["usersPwd"];
     $checkPassword = password_verify($pwd, $hashedPassword);
 
-    if ($checkPassword === false )
-    {
+    if ($checkPassword === false) {
         header("location: ../login.php?error=wronglogin");
         exit();
-    }
-    else if ($checkPassword === true )
-    {
+    } else if ($checkPassword === true) {
         session_start();
         $_SESSION["userid"] = $usernameExists["usersId"];
         $_SESSION["useruid"] = $usernameExists["usersUid"];
-        header("location: ../KonkurssAdmin.php");
+        $_SESSION["rolli"] = $usernameExists["rolli"];
+        if ($_SESSION["rolli"] == 0) {
+            header("Location: ../KonkurssKasutaja.php");
+        } else {
+            header("Location: ../KonkurssAdmin.php");
+        }
         exit();
     }
 }

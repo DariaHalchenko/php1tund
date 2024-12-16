@@ -2,6 +2,10 @@
 session_start();
 require ('conf.php');
 global $yhendus;
+if (!isset($_SESSION['rolli'])) {
+    echo "Kasutaja pole sisse logitud";
+    exit();
+}
 // laulu peitmine
 if(isset($_REQUEST["peitmine_id"])) {
     $paring = $yhendus->prepare("Update konkurss SET avalik=0 WHERE id=?");
@@ -55,19 +59,17 @@ if(isset($_REQUEST["nullidakonkurss_id"])) {
 <nav>
     <ul>
         <?php
-        if (isset($_SESSION['useruid'])) {
-            echo '<li><a href="KonkurssAdmin.php">Admin</a></li>';
-        }
-        ?>
-        <li><a href="KonkurssKasutaja.php">Kasutaja</a></li>
-        <li><a href="konkurss1kaupa.php">Konkurss 1 kaupa</a></li>
-        <?php
-        if (!isset($_SESSION['useruid'])) {
+        if (isset($_SESSION['useruid']) && isset($_SESSION['rolli'])) {
+            if ($_SESSION['rolli'] == 1) {
+                echo '<li><a href="KonkurssAdmin.php">Admin</a></li>';
+            } else if ($_SESSION['rolli'] == 0) {
+                echo '<li><a href="KonkurssKasutaja.php">Kasutaja</a></li>';
+                echo '<li><a href="konkurss1kaupa.php">Konkurss 1 kaupa</a></li>';
+            }
+            echo '<li><a href="Sisselogimisvorm/logout.inc.php">Logi välja (' . htmlspecialchars($_SESSION['useruid']) . ')</a></li>';
+        } else {
             echo '<li><a href="login.php">Sisse loogimine</a></li>';
             echo '<li><a href="signup.php">Registreerimine</a></li>';
-        }
-        else {
-            echo '<li><a href="Sisselogimisvorm/logout.inc.php">Logi välja</a></li>';
         }
         ?>
     </ul>
