@@ -16,11 +16,17 @@ if (!empty($_REQUEST["uusKonkurss"])) {
 }
 
 // Kommenteerimine
-if (isset($_REQUEST["uusKomment"])) {
-    $paring = $yhendus->prepare("UPDATE konkurss SET kommentaarid = CONCAT(kommentaarid, ?) WHERE id = ?");
-    $kommentLisa = "\n" . $_REQUEST["komment"];
-    $paring->bind_param("si", $kommentLisa, $_REQUEST["uusKomment"]);
-    $paring->execute();
+$error_message = "";
+if(isset($_REQUEST["uusKomment"])) {
+    $komment = trim($_REQUEST["komment"]);
+    if (!empty($komment)) {
+        $paring = $yhendus->prepare("UPDATE konkurss SET kommentaarid=CONCAT(kommentaarid, ?) WHERE id=?");
+        $kommentLisa = "\n" . $komment;
+        $paring->bind_param("si", $kommentLisa, $_REQUEST["uusKomment"]);
+        $paring->execute();
+    } else {
+        $error_message = "Kommentaar ei saa olla tühi!";
+    }
 }
 
 // Punktide lisamine +1
@@ -31,8 +37,8 @@ if (isset($_REQUEST["heakonkurss_id"])) {
 }
 
 // Punktide vähendamine -1
-if (isset($_REQUEST["halvastikonkurss_id"])) {
-    $paring = $yhendus->prepare("UPDATE konkurss SET punktid = punktid - 1 WHERE id = ?");
+if(isset($_REQUEST["halvastikonkurss_id"])) {
+    $paring = $yhendus->prepare("UPDATE konkurss SET punktid=GREATEST(0, punktid-1) WHERE id=?");
     $paring->bind_param('i', $_REQUEST["halvastikonkurss_id"]);
     $paring->execute();
 }
@@ -103,6 +109,9 @@ if (isset($_REQUEST["halvastikonkurss_id"])) {
                     <input type="text" name="komment" id="komment">
                     <input type="submit" value="Lisa kommentaar">
                 </form>
+                <?php if ($error_message != ""): ?>
+                    <p class="error-message"><?= $error_message ?></p>
+                <?php endif; ?>
                 <a href='?heakonkurss_id=<?=$id?>'>Lisa +1 punkt</a><br>
                 <a href='?halvastikonkurss_id=<?=$id?>'>-1 punkt</a>
                 <?php

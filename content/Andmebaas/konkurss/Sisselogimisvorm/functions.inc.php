@@ -1,5 +1,4 @@
 <?php
-// signup
 function emptyInputSignup($name, $email, $username, $pwd, $pwdRepeat)
 {
     $result = false;
@@ -90,8 +89,6 @@ function createUser($conn, $name, $email, $username, $pwd)
     header("location: ../signup.php?error=none");
     exit();
 }
-
-// signup / login
 function usernameExists($conn, $username)
 {
     $sql = "SELECT * FROM users WHERE usersUid = ?;";
@@ -120,8 +117,6 @@ function usernameExists($conn, $username)
         return false;
     }
 }
-
-// login
 function emptyInputLogin($username, $pwd)
 {
     $result = false;
@@ -131,7 +126,6 @@ function emptyInputLogin($username, $pwd)
     }
     return $result;
 }
-
 function loginUser($conn, $username, $pwd)
 {
     $usernameExists = usernameExists($conn, $username);

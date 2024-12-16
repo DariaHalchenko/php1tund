@@ -185,3 +185,9 @@ button.ok-button {
 button.ok-button:hover {
     background-color: RoyalBlue;
 }
+.error-message {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 15px;
+}
