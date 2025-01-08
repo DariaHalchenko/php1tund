@@ -1,11 +1,11 @@
 <?php
-//session_start();
+session_start();
 require ('conf.php');
 global $yhendus;
-//if (!isset($_SESSION['rolli'])) {
- //  echo "Kasutaja pole sisse logitud";
- //  exit();
-//}
+if (!isset($_SESSION['rolli'])) {
+    echo "Kasutaja pole sisse logitud";
+    exit();
+}
 // Lõpetatud
 if(isset($_REQUEST["lopetatud_id"])) {
     $paring = $yhendus->prepare("Update lend SET lopetatud=0 WHERE id=?");
@@ -27,16 +27,16 @@ if(isset($_REQUEST["kustuta"])){
 //tabeli andmete lisamine
 if(isset($_REQUEST["lennu_nr"]) && !empty($_REQUEST["lennu_nr"])){
     global $yhendus;
-    $paring=$yhendus->prepare("INSERT INTO lend(lennu_nr, kohtade_arv, ots, siht, siht_pilt, valjumisaeg)
-VALUES (?, ?, ?, ?, ?, ?)");
+    $paring=$yhendus->prepare("INSERT INTO lend(lennu_nr, kohtade_arv, ots, siht, siht_pilt, valjumisaeg, kestvus)
+VALUES (?, ?, ?, ?, ?, ?, ?)");
     //i- integer, s- string
     $paring->bind_param("ssssss", $_REQUEST["lennu_nr"], $_REQUEST["kohtade_arv"], $_REQUEST["ots"], $_REQUEST["siht"],
-        $_REQUEST["siht_pilt"], $_REQUEST["valjumisaeg"]);
+        $_REQUEST["siht_pilt"], $_REQUEST["valjumisaeg"], $_REQUEST["kestvus"]);
     $paring->execute();
 }
 //tabeli sisu kuvamine
-$paring=$yhendus->prepare("SELECT id, lennu_nr, kohtade_arv, ots, siht, siht_pilt, valjumisaeg, lopetatud  FROM lend");
-$paring->bind_result($id, $lennu_nr, $kohtade_arv, $ots, $siht, $siht_pilt, $valjumisaeg, $lopetatud);
+$paring=$yhendus->prepare("SELECT id, lennu_nr, kohtade_arv, ots, siht, siht_pilt, valjumisaeg, lopetatud, kestvus  FROM lend");
+$paring->bind_result($id, $lennu_nr, $kohtade_arv, $ots, $siht, $siht_pilt, $valjumisaeg, $lopetatud, $kestvus);
 $paring->execute();
 ?>
 <!DOCTYPE html>
@@ -44,7 +44,7 @@ $paring->execute();
 <html>
 <head>
     <title>Lennujaam</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="LennujaamStyle.css">
 </head>
 <body>
 <header>
@@ -68,7 +68,7 @@ $paring->execute();
         ?>
     </ul>
 </nav>
-<table  border="2">
+<table>
     <tr>
         <th></th>
         <th>Id</th>
@@ -78,20 +78,22 @@ $paring->execute();
         <th>Siht</th>
         <th>Siht pilt</th>
         <th>Väljumisaeg</th>
+        <th>Kestvus</th>
         <th colspan="2">Staatus</th>
     </tr>
     <?php
-
     while($paring->fetch()) {
         echo "<tr>";
         echo "<td><a href='?kustuta=$id'>Kustuta</a></td>";
-        echo "<td>$id</td>";
-        echo "<td>$lennu_nr</td>";
-        echo "<td>$kohtade_arv</td>";
-        echo "<td>$ots</td>";
-        echo "<td>$siht</td>";
+        //htmlspecialchars - ei käivita sisestatud koodi <>
+        echo "<td>".htmlspecialchars($id)."</td>";
+        echo "<td>".htmlspecialchars($lennu_nr)."</td>";
+        echo "<td>".htmlspecialchars($kohtade_arv)."</td>";
+        echo "<td>".htmlspecialchars($ots)."</td>";
+        echo "<td>".htmlspecialchars($siht)."</td>";
         echo "<td><img src='$siht_pilt' alt='pilt' width='100px'></td>";
-        echo "<td>$valjumisaeg</td>";
+        echo "<td>".htmlspecialchars($valjumisaeg)."</td>";
+        echo "<td>".htmlspecialchars($kestvus)."</td>";
         //ava
         $avamistekst="Ava";
         $avamisparam="aktiivne_id";
@@ -108,29 +110,34 @@ $paring->execute();
         ?>
 </table>
 <table>
-    <h2>Uue lennu lisamine</h2>
-    <!--tabeli lisamisVorm-->
-    <form action="?" method="post">
-        <label for="lennu_nr">Lennu_nr</label>
-        <input type="text" id="lennu_nr" name="lennu_nr">
-        <br>
-        <label for="kohtade_arv">Kohtade_arv</label>
-        <input type="number" id="kohtade_arv" name="kohtade_arv">
-        <br>
-        <label for="ots">Ots</label>
-        <input type="text" id="ots" name="ots">
-        <br>
-        <label for="siht">Siht</label>
-        <input type="text" id="siht" name="siht">
-        <br>
-        <label for="siht_pilt">Pilt</label><br>
-        <textarea id="siht_pilt" name="siht_pilt" cols="30" rows="10">Sisesta pildi link</textarea><br>
-        <br>
-        <label for="valjumisaeg">Väljumisaeg</label>
-        <input type="datetime-local" id="valjumisaeg" name="valjumisaeg">
-        <br>
-        <input type="submit" value="OK">
-    </form>
+    <section class="lisamine">
+        <h2>Uue lennu lisamine</h2>
+        <!--tabeli lisamisVorm-->
+        <form action="?" method="post">
+            <label for="lennu_nr">Lennu_nr</label>
+            <input type="text" id="lennu_nr" name="lennu_nr">
+            <br>
+            <label for="kohtade_arv">Kohtade_arv</label>
+            <input type="number" id="kohtade_arv" name="kohtade_arv">
+            <br>
+            <label for="ots">Ots</label>
+            <input type="text" id="ots" name="ots">
+            <br>
+            <label for="siht">Siht</label>
+            <input type="text" id="siht" name="siht">
+            <br>
+            <label for="siht_pilt">Pilt</label><br>
+            <textarea id="siht_pilt" name="siht_pilt" cols="30" rows="10">Sisesta pildi link</textarea><br>
+            <br>
+            <label for="valjumisaeg">Väljumisaeg</label>
+            <input type="datetime-local" id="valjumisaeg" name="valjumisaeg">
+            <br>
+            <label for="">Kestvus</label>
+            <input type="number" id="kestvus" name="kestvus">
+            <br>
+            <input type="submit" value="OK">
+        </form>
+    </section>
 </table>
 </body>
 </html>

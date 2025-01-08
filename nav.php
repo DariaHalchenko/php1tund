@@ -30,5 +30,14 @@
         <li>
             <a href="content/Andmebaas/matkajad.php" target="_blank">Matkajad</a>
         </li>
+        <li>
+            <a href="Lennujaam/reisijate_lisandumine.php" target="_blank">Reisijate</a>
+        </li>
+        <li>
+            <a href="Lennujaam/lendude_lisamiseks.php" target="_blank">Lisamine</a>
+        </li>
+        <li>
+            <a href="Lennujaam/koiki_lopetatud.php" target="_blank">Kõik</a>
+        </li>
     </ul>
 </nav>

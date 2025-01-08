@@ -1,12 +1,11 @@
 <?php
-//session_start();
-// Получаем текущую дату и время
+session_start();
 require ('conf.php');
 global $yhendus;
-//if (!isset($_SESSION['rolli'])) {
-//  echo "Kasutaja pole sisse logitud";
-//  exit();
-//}
+if (!isset($_SESSION['rolli'])) {
+    echo "Kasutaja pole sisse logitud";
+    exit();
+}
 //kustutamine
 if(isset($_REQUEST["kustuta"])){
     $kask=$yhendus->prepare("DELETE FROM reisijad WHERE id=?");
@@ -32,7 +31,7 @@ $paring->execute();
 <html>
 <head>
     <title>Reisijad</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="LennujaamStyle.css">
 </head>
 <body>
 <header>
@@ -56,7 +55,7 @@ $paring->execute();
         ?>
     </ul>
 </nav>
-<table  border="2">
+<table>
     <tr>
         <th></th>
         <th>Id</th>
@@ -66,53 +65,49 @@ $paring->execute();
         <th>reisija_foto</th>
     </tr>
     <?php
-
     while($paring->fetch()) {
         echo "<tr>";
         echo "<td><a href='?kustuta=$id'>Kustuta</a></td>";
-        echo "<td>$id</td>";
-        echo "<td>$lend_id</td>";
-        echo "<td>$reisija_nimi</td>";
-        echo "<td>$reisija_perekonanimi</td>";
+        echo "<td>".htmlspecialchars($id)."</td>";
+        echo "<td>".htmlspecialchars($lend_id)."</td>";
+        echo "<td>".htmlspecialchars($reisija_nimi)."</td>";
+        echo "<td>".htmlspecialchars($reisija_perekonanimi)."</td>";
         echo "<td><img src='$reisija_foto' alt='pilt' width='100px'></td>";
     }
     ?>
 </table>
 <table>
-    <h2>Uue lennu lisamine</h2>
-    <!--tabeli lisamisVorm-->
-    <form method="post" action="">
-        <label for="lend_id">Lennu_nr</label>
-        <select id="lend_id" name="lend_id" required>
+    <section class="lisamine">
+        <h2>Uue reisija lisamine</h2>
+        <!--tabeli lisamisVorm-->
+        <form method="post" action="">
+            <label for="lend_id">Lennu_nr</label>
+            <select id="lend_id" name="lend_id" required>
+                <option value="">Vali lend</option>
+                <?php
+                // kõikide lendude laadimine rippmenüüde jaoks
+                $paring_lennud = $yhendus->prepare("SELECT id, lennu_nr FROM lend WHERE lopetatud=1");
+                $paring_lennud->bind_result($id, $lennu_nr);
+                $paring_lennud->execute();
 
-            <option value="">Vali lend</option>
-
-
-            <?php
-            // Загрузка всех рейсов для выпадающего списка
-            $paring_lennud = $yhendus->prepare("SELECT id, lennu_nr FROM lend WHERE valjumisaeg > ?");
-            $paring_lennud->bind_result($id, $lennu_nr);
-            $today=new DateTime();
-            $paring_lennud->bind_param("s", $today);
-            $paring_lennud->execute();
-
-            while ($paring_lennud->fetch()) {
-                echo "<option value='$id'>$lennu_nr</option>";
-            }
-            ?>
-        </select>
-        <br>
-        <label for="reisija_nimi">reisija_nimi</label>
-        <input type="text" id="reisija_nimi" name="reisija_nimi">
-        <br>
-        <label for="reisija_perekonanimi">reisija_perekonanimi</label>
-        <input type="text" id="reisija_perekonanimi" name="reisija_perekonanimi">
-        <br>
-        <label for="reisija_foto">reisija_foto</label><br>
-        <textarea id="reisija_foto" name="reisija_foto" cols="30" rows="10">Sisesta pildi link</textarea><br>
-        <br>
-        <input type="submit" value="OK">
-    </form>
+                while ($paring_lennud->fetch()) {
+                    echo "<option value='$id'>$lennu_nr</option>";
+                }
+                ?>
+            </select>
+            <br>
+            <label for="reisija_nimi">reisija_nimi</label>
+            <input type="text" id="reisija_nimi" name="reisija_nimi">
+            <br>
+            <label for="reisija_perekonanimi">reisija_perekonanimi</label>
+            <input type="text" id="reisija_perekonanimi" name="reisija_perekonanimi">
+            <br>
+            <label for="reisija_foto">reisija_foto</label><br>
+            <textarea id="reisija_foto" name="reisija_foto" cols="30" rows="10">Sisesta pildi link</textarea><br>
+            <br>
+            <input type="submit" value="OK">
+        </form>
+    </section>
 </table>
 </body>
 </html>

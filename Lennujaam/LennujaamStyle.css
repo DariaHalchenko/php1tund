@@ -1,0 +1,157 @@
+body {
+    background: linear-gradient(to bottom, #cc99ff 0%, #ffccff 100%);    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family: 'Abel', sans-serif;
+    opacity: .95;
+    color: #333;
+    border-radius: 80px;
+}
+header {
+    background: linear-gradient(to right, #ff99ff, #ff0066);
+    text-align: center;
+    padding: 20px 0;
+    color: white;
+    text-transform: uppercase;
+    border-bottom: 5px solid MediumVioletRed;
+    border-radius: 80px;
+}
+nav {
+    background-color: #ff99ff;
+    border-bottom: 2px solid #ff0066;
+    padding: 10px 0;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+nav ul li {
+    display: inline;
+}
+nav ul li a {
+    text-decoration: none;
+    color: MintCream;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+nav ul li a:hover {
+    background-color: Orchid;
+    color: white;
+}
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+table th {
+    background: MediumOrchid;
+    color: MintCream;
+    text-transform: uppercase;
+}
+
+table tr:nth-child(even) {
+    background-color: MintCream;
+}
+
+table tr:hover {
+    background: linear-gradient(to bottom, #cc66ff 0%, #ffffff 100%);
+}
+table td a {
+    text-decoration: none;
+    color: #ff0066;
+    font-weight: bold;
+}
+table td a:hover {
+    text-decoration: underline;
+}
+.lisamine {
+    width: 60%;
+    margin: 30px auto;
+    padding: 25px;
+    border: 3px solid #ff99ff;
+    border-radius: 15px;
+    background: linear-gradient(to top, #ff99ff 0%, #ffffff 100%);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+.lisamine h2 {
+    font-size: 1.8em;
+    color: #ff0066;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 2px solid #ff99ff;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+.lisamine form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 30px;
+}
+.lisamine form label {
+    font-size: 1em;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 30px;
+    color: #333;
+}
+.lisamine form input{
+    padding: 10px;
+    border: 2px solid #ff99ff;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+.lisamine form textarea {
+    padding: 10px;
+    border: 2px solid #ff99ff;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+.lisamine form input:focus{
+    border-color: #ff0066;
+    outline: none;
+}
+.lisamine form textarea:focus {
+    border-color: #ff0066;
+    outline: none;
+}
+.lisamine form input[type="submit"] {
+    background: linear-gradient(to right, #ff0066, #ff99ff);
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+.lisamine form input[type="submit"]:hover {
+    background: linear-gradient(to right, #ff99ff, #ff0066);
+}
+footer {
+    color: white;
+    background: linear-gradient(to bottom, #ff99ff 0%, #ff0066 100%);
+    text-align: center;
+    border: solid 5pt MediumVioletRed;
+    border-radius: 80px;
+    padding: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+}
