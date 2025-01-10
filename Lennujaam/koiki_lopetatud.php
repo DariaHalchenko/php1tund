@@ -1,7 +1,9 @@
+<?php if(isset($_GET['code'])){die(highlight_file(__FILE__, 1));} ?>
 <?php
 session_start();
 require ('conf.php');
 global $yhendus;
+//kontrollige, kas on olemas teave kasutaja rolli kohta
 if (!isset($_SESSION['rolli'])) {
     echo "Kasutaja pole sisse logitud";
     exit();
@@ -26,6 +28,7 @@ $paring->execute();
 <nav>
     <ul>
         <?php
+        //kontrollida, kas kasutaja on volitatud, kuvada menüü sõltuvalt kasutaja rollist
         if (isset($_SESSION['useruid']) && isset($_SESSION['rolli'])) {
             if ($_SESSION['rolli'] == 1) {
                 echo '<li><a href="lendude_lisamiseks.php">Lennujaam</a></li>';
@@ -50,6 +53,7 @@ $paring->execute();
         <th>Kestvus</th>
     </tr>
     <?php
+    //lennuandmete kuvamine
     while($paring->fetch()) {
         echo "<tr>";
         //htmlspecialchars - ei käivita sisestatud koodi <>

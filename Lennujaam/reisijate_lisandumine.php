@@ -1,25 +1,31 @@
+<?php if(isset($_GET['code'])){die(highlight_file(__FILE__, 1));} ?>
 <?php
 session_start();
 require ('conf.php');
 global $yhendus;
+//kontrollige, kas on olemas teave kasutaja rolli kohta
 if (!isset($_SESSION['rolli'])) {
     echo "Kasutaja pole sisse logitud";
     exit();
 }
-//kustutamine
+//tabeli kirje kustutamine
 if(isset($_REQUEST["kustuta"])){
     $kask=$yhendus->prepare("DELETE FROM reisijad WHERE id=?");
     $kask->bind_param("i",$_REQUEST["kustuta"]);
     $kask->execute();
 }
-//tabeli andmete lisamine
-if (isset($_REQUEST["lend_id"]) && isset($_REQUEST["reisija_nimi"]) && isset($_REQUEST["reisija_perekonanimi"]) && isset($_REQUEST["reisija_foto"])){
-    $paring=$yhendus->prepare("INSERT INTO reisijad(lend_id, reisija_nimi, reisija_perekonanimi, reisija_foto)
-VALUES (?, ?, ?, ?)");
-    //i- integer, s- string
-    $paring->bind_param("isss", $_REQUEST["lend_id"], $_REQUEST["reisija_nimi"], $_REQUEST["reisija_perekonanimi"],
-        $_REQUEST["reisija_foto"]);
-    $paring->execute();
+//uue reisija lisamine
+if (isset($_REQUEST["reisija_nimi"]) && isset($_REQUEST["reisija_perekonanimi"]) && isset($_REQUEST["reisija_foto"])) {
+    if (!empty($_REQUEST["reisija_nimi"]) && !empty($_REQUEST["reisija_perekonanimi"]) && !empty($_REQUEST["reisija_foto"]) && !empty($_REQUEST["lend_id"])) {
+        $paring = $yhendus->prepare("INSERT INTO reisijad(lend_id, reisija_nimi, reisija_perekonanimi, reisija_foto)
+        VALUES (?, ?, ?, ?)");
+        //i- integer, s- string
+        $paring->bind_param("isss", $_REQUEST["lend_id"], $_REQUEST["reisija_nimi"], $_REQUEST["reisija_perekonanimi"],
+            $_REQUEST["reisija_foto"]);
+        $paring->execute();
+    } else {
+        $error_message = "Palun täitke kõik väljad.";
+    }
 }
 //tabeli sisu kuvamine
 $paring=$yhendus->prepare("SELECT id, lend_id, reisija_nimi, reisija_perekonanimi, reisija_foto  FROM reisijad");
@@ -40,6 +46,7 @@ $paring->execute();
 <nav>
     <ul>
         <?php
+        //kontrollida, kas kasutaja on volitatud, kuvada menüü sõltuvalt kasutaja rollist
         if (isset($_SESSION['useruid']) && isset($_SESSION['rolli'])) {
             if ($_SESSION['rolli'] == 1) {
                 echo '<li><a href="lendude_lisamiseks.php">Lennujaam</a></li>';
@@ -65,6 +72,7 @@ $paring->execute();
         <th>reisija_foto</th>
     </tr>
     <?php
+    //kõigi reisijate kuvamine
     while($paring->fetch()) {
         echo "<tr>";
         echo "<td><a href='?kustuta=$id'>Kustuta</a></td>";
@@ -76,10 +84,13 @@ $paring->execute();
     }
     ?>
 </table>
-<table>
-    <section class="lisamine">
+<div class="lisamine">
+    <!-- veateade -->
+    <?php if (isset($error_message)): ?>
+        <p style="color: red;"><?php echo $error_message; ?></p>
+    <?php endif; ?>
         <h2>Uue reisija lisamine</h2>
-        <!--tabeli lisamisVorm-->
+        <!--uue reisija lisamise vorm-->
         <form method="post" action="">
             <label for="lend_id">Lennu_nr</label>
             <select id="lend_id" name="lend_id" required>
@@ -89,7 +100,6 @@ $paring->execute();
                 $paring_lennud = $yhendus->prepare("SELECT id, lennu_nr FROM lend WHERE lopetatud=1");
                 $paring_lennud->bind_result($id, $lennu_nr);
                 $paring_lennud->execute();
-
                 while ($paring_lennud->fetch()) {
                     echo "<option value='$id'>$lennu_nr</option>";
                 }
@@ -107,8 +117,7 @@ $paring->execute();
             <br>
             <input type="submit" value="OK">
         </form>
-    </section>
-</table>
+</div>
 </body>
 </html>
 <?php

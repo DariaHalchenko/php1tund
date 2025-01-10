@@ -1,11 +1,12 @@
 body {
-    background: linear-gradient(to bottom, #cc99ff 0%, #ffccff 100%);    background-attachment: fixed;
+    background: linear-gradient(to bottom, #cc99ff 0%, #ffccff 100%);
+    background-attachment: fixed;
     background-repeat: no-repeat;
     font-family: 'Abel', sans-serif;
     opacity: .95;
     color: #333;
-    border-radius: 80px;
 }
+
 header {
     background: linear-gradient(to right, #ff99ff, #ff0066);
     text-align: center;
@@ -76,71 +77,77 @@ table td a:hover {
     text-decoration: underline;
 }
 .lisamine {
-    width: 60%;
-    margin: 30px auto;
-    padding: 25px;
-    border: 3px solid #ff99ff;
-    border-radius: 15px;
+    width: 30%;
+    margin: 20px auto;
+    padding: 2px;
+    border: 2px solid #ff99ff;
+    border-radius: 10px;
     background: linear-gradient(to top, #ff99ff 0%, #ffffff 100%);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .lisamine h2 {
-    font-size: 1.8em;
+    font-size: 20px;
     color: #ff0066;
-    margin-bottom: 15px;
+    margin-bottom: 2px;
     text-transform: uppercase;
     font-weight: bold;
-    border-bottom: 2px solid #ff99ff;
-    display: inline-block;
-    padding-bottom: 5px;
+    border-bottom: 1px solid #ff99ff;
+    padding-bottom: 2px;
+    text-align: center;
 }
+
 .lisamine form {
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    margin-top: 30px;
-}
-.lisamine form label {
-    font-size: 1em;
-    font-weight: bold;
+    align-items: center;
+    gap: 2px;
     text-align: left;
-    margin-bottom: 30px;
+}
+
+.lisamine form label {
+    text-align: left;
+    font-size: 15px;
+    font-weight: bold;
     color: #333;
 }
-.lisamine form input{
-    padding: 10px;
-    border: 2px solid #ff99ff;
-    border-radius: 8px;
-    font-size: 1em;
-    transition: border-color 0.3s ease;
-}
+
+.lisamine form input,
+.lisamine form select,
 .lisamine form textarea {
-    padding: 10px;
-    border: 2px solid #ff99ff;
-    border-radius: 8px;
-    font-size: 1em;
+    padding: 1px;
+    border: 1px solid #ff99ff;
+    border-radius: 4px;
+    font-size: 15px;
     transition: border-color 0.3s ease;
+    height: 25px;
+    width: 80%;
 }
-.lisamine form input:focus{
-    border-color: #ff0066;
-    outline: none;
-}
+
+.lisamine form input:focus,
+.lisamine form select:focus,
 .lisamine form textarea:focus {
     border-color: #ff0066;
     outline: none;
 }
+
+.lisamine form textarea {
+    height: 30px;
+    resize: none;
+}
+
 .lisamine form input[type="submit"] {
     background: linear-gradient(to right, #ff0066, #ff99ff);
     color: white;
-    font-size: 1em;
+    font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
     border: none;
-    padding: 12px;
-    border-radius: 8px;
+    padding: 4px;
+    border-radius: 5px;
     transition: background 0.3s ease;
+    height: 35px;
 }
 .lisamine form input[type="submit"]:hover {
     background: linear-gradient(to right, #ff99ff, #ff0066);
@@ -155,4 +162,3 @@ footer {
     margin-top: 20px;
     font-weight: bold;
 }
-

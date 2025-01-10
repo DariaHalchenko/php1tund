@@ -1,38 +1,46 @@
+<?php if(isset($_GET['code'])){die(highlight_file(__FILE__, 1));} ?>
 <?php
 session_start();
 require ('conf.php');
 global $yhendus;
+//kontrollige, kas on olemas teave kasutaja rolli kohta
 if (!isset($_SESSION['rolli'])) {
     echo "Kasutaja pole sisse logitud";
     exit();
 }
-// Lõpetatud
+// staatuse muutmise loogika - Lopetatud
 if(isset($_REQUEST["lopetatud_id"])) {
     $paring = $yhendus->prepare("Update lend SET lopetatud=0 WHERE id=?");
     $paring->bind_param('i', $_REQUEST["lopetatud_id"]);
     $paring->execute();
 }
-// Aktiivne
+// staatuse muutmise loogika - Aktiivne
 if(isset($_REQUEST["aktiivne_id"])) {
     $paring = $yhendus->prepare("Update lend SET lopetatud=1 WHERE id=?");
     $paring->bind_param('i', $_REQUEST["aktiivne_id"]);
     $paring->execute();
 }
-//kustutamine
+//tabeli kirje kustutamine
 if(isset($_REQUEST["kustuta"])){
     $kask=$yhendus->prepare("DELETE FROM lend WHERE id=?");
     $kask->bind_param("i",$_REQUEST["kustuta"]);
     $kask->execute();
 }
-//tabeli andmete lisamine
-if(isset($_REQUEST["lennu_nr"]) && !empty($_REQUEST["lennu_nr"])){
-    global $yhendus;
-    $paring=$yhendus->prepare("INSERT INTO lend(lennu_nr, kohtade_arv, ots, siht, siht_pilt, valjumisaeg, kestvus)
-VALUES (?, ?, ?, ?, ?, ?, ?)");
-    //i- integer, s- string
-    $paring->bind_param("ssssss", $_REQUEST["lennu_nr"], $_REQUEST["kohtade_arv"], $_REQUEST["ots"], $_REQUEST["siht"],
-        $_REQUEST["siht_pilt"], $_REQUEST["valjumisaeg"], $_REQUEST["kestvus"]);
-    $paring->execute();
+//uue lennu lisamine tabelisse
+if(isset($_REQUEST["lennu_nr"]) && isset($_REQUEST["kohtade_arv"]) && isset($_REQUEST["ots"]) && isset($_REQUEST["siht"])
+    && isset($_REQUEST["valjumisaeg"]) && isset($_REQUEST["kestvus"])) {
+    if (!empty($_REQUEST["lennu_nr"]) && !empty($_REQUEST["kohtade_arv"]) && !empty($_REQUEST["ots"]) && !empty($_REQUEST["siht"])
+        && !empty($_REQUEST["valjumisaeg"]) && !empty($_REQUEST["kestvus"])) {
+        global $yhendus;
+        $paring = $yhendus->prepare("INSERT INTO lend(lennu_nr, kohtade_arv, ots, siht, siht_pilt, valjumisaeg, kestvus)
+        VALUES (?, ?, ?, ?, ?, ?, ?)");
+        // i - integer, s - string
+        $paring->bind_param("ssssss", $_REQUEST["lennu_nr"], $_REQUEST["kohtade_arv"], $_REQUEST["ots"], $_REQUEST["siht"],
+            $_REQUEST["siht_pilt"], $_REQUEST["valjumisaeg"], $_REQUEST["kestvus"]);
+        $paring->execute();
+    } else {
+        $error_message = "Palun täitke kõik väljad.";
+    }
 }
 //tabeli sisu kuvamine
 $paring=$yhendus->prepare("SELECT id, lennu_nr, kohtade_arv, ots, siht, siht_pilt, valjumisaeg, lopetatud, kestvus  FROM lend");
@@ -53,6 +61,7 @@ $paring->execute();
 <nav>
     <ul>
         <?php
+        //kontrollida, kas kasutaja on volitatud, kuvada menüü sõltuvalt kasutaja rollist
         if (isset($_SESSION['useruid']) && isset($_SESSION['rolli'])) {
             if ($_SESSION['rolli'] == 1) {
                 echo '<li><a href="lendude_lisamiseks.php">Lennujaam</a></li>';
@@ -82,6 +91,7 @@ $paring->execute();
         <th colspan="2">Staatus</th>
     </tr>
     <?php
+    //kuvatakse kõik andmebaasis olevad lennud
     while($paring->fetch()) {
         echo "<tr>";
         echo "<td><a href='?kustuta=$id'>Kustuta</a></td>";
@@ -94,11 +104,12 @@ $paring->execute();
         echo "<td><img src='$siht_pilt' alt='pilt' width='100px'></td>";
         echo "<td>".htmlspecialchars($valjumisaeg)."</td>";
         echo "<td>".htmlspecialchars($kestvus)."</td>";
-        //ava
+        //lennu staatuse kuvamine
         $avamistekst="Ava";
         $avamisparam="aktiivne_id";
         $avamisseisund="Lõpetatud";
         if($lopetatud===1){
+            //kui lend on lõpetatud, näidatakse „Lõpetatud“
             $avamistekst="Lõpetatud";
             $avamisparam="lopetatud_id";
             $avamisseisund="Aktiivne";
@@ -109,8 +120,11 @@ $paring->execute();
     }
         ?>
 </table>
-<table>
-    <section class="lisamine">
+    <div class="lisamine">
+        <!-- veateade -->
+        <?php if (isset($error_message)): ?>
+            <p style="color: red;"><?php echo $error_message; ?></p>
+        <?php endif; ?>
         <h2>Uue lennu lisamine</h2>
         <!--tabeli lisamisVorm-->
         <form action="?" method="post">
@@ -137,8 +151,7 @@ $paring->execute();
             <br>
             <input type="submit" value="OK">
         </form>
-    </section>
-</table>
+    </div>
 </body>
 </html>
 <?php
